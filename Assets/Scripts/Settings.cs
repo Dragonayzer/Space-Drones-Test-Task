@@ -6,3 +6,12 @@ public static class Settings
     public static bool dronePathDisplay = false;
     public static float simulationTime = 1f;
 }
+
+public enum SettingParameter
+{
+    DroneAmount,
+    DroneSpeed,
+    ResourceSpawnRate,
+    DronePathDisplay,
+    SimulationTime
+}
