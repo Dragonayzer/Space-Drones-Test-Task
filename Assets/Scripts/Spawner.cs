@@ -7,11 +7,13 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private GameObject prefab;
 
-    public void Spawn() {
-        Spawn(Vector2.zero, Vector2.zero);
+    public GameObject Spawn() {
+        return Spawn(Vector2.zero, Vector2.zero);
     }
-    public void Spawn(Vector2 offsetMin, Vector2 offsetMax) {
-        GameObject newResource = Instantiate(prefab);
-        newResource.transform.position = new Vector3(Random.Range(offsetMin.x, offsetMax.x), 1f, Random.Range(offsetMin.y, offsetMax.y));
+    public GameObject Spawn(Vector2 offsetMin, Vector2 offsetMax)
+    {
+        GameObject newObject = Instantiate(prefab);
+        newObject.transform.position = transform.position + new Vector3(Random.Range(offsetMin.x, offsetMax.x), 1f, Random.Range(offsetMin.y, offsetMax.y));
+        return newObject;
     }
 }
