@@ -5,6 +5,8 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     private float lastResourceSpawn = -10f;
+    [SerializeField]
+    private float resourceSpawnRateCap = 0.1f;
 
     [SerializeField]
     private Vector2 worldMin;
@@ -12,7 +14,7 @@ public class ResourceManager : MonoBehaviour
     private Vector2 worldMax;
 
     void Update() {
-        if (lastResourceSpawn + Settings.resourceSpawnRate < Time.time) {
+        if (lastResourceSpawn + Mathf.Max(Settings.resourceSpawnRate, resourceSpawnRateCap) < Time.time) {
             GetComponent<Spawner>().Spawn(worldMin, worldMax);
             lastResourceSpawn = Time.time;
         }
