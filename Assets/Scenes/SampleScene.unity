@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 530638060}
   - component: {fileID: 530638059}
   - component: {fileID: 530638063}
+  - component: {fileID: 530638064}
+  - component: {fileID: 530638065}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -260,6 +262,38 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 44361aa090f8bc3489ce85450148bb6b, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &530638064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530638058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673b9970240d3b5458e640516eeb81e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droneAmount: 3
+  droneSpeed: 1
+  resourceSpawnRate: 5
+  dronePathDisplay: 0
+  simulationTime: 1
+  worldMin: {x: -45, y: -45}
+  worldMax: {x: 45, y: 45}
+--- !u!114 &530638065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530638058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5475140c4aef39e44ac57eeb8c270639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6833667177513989894, guid: 7d9b163f9421d014589fb851b482e9e0, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,18 +405,6 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1581520554345525378, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581520554345525378, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581520554345525378, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581520554345525378, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40
       objectReference: {fileID: 0}
@@ -446,7 +468,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -528,27 +549,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673b9970240d3b5458e640516eeb81e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  droneAmount: 3
-  droneSpeed: 1
-  resourceSpawnRate: 5
-  dronePathDisplay: 0
-  simulationTime: 1
-  worldMin: {x: -45, y: -45}
-  worldMax: {x: 45, y: 45}
-  floorPlane: {fileID: 530638058}
-  resourcePrefab: {fileID: 6833667177513989894, guid: 7d9b163f9421d014589fb851b482e9e0, type: 3}
 --- !u!1001 &4214865764444425641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -559,18 +559,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 260106801496771500, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
       propertyPath: m_Carve
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581520554345525378, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581520554345525378, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1581520554345525378, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1581520554345525378, guid: 8c8d76e519a9942419c3b73cac311479, type: 3}
