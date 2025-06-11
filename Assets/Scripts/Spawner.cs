@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     public GameObject Spawn(Vector2 offsetMin, Vector2 offsetMax)
     {
         GameObject newObject = Instantiate(prefab);
-        newObject.transform.position = transform.position + new Vector3(Random.Range(offsetMin.x, offsetMax.x), 1f, Random.Range(offsetMin.y, offsetMax.y));
+        newObject.transform.position = transform.position + new Vector3(Random.Range(offsetMin.x, offsetMax.x), .5f, Random.Range(offsetMin.y, offsetMax.y));
         return newObject;
     }
 }

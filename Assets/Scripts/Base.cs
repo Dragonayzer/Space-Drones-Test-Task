@@ -26,6 +26,7 @@ public class Base : MonoBehaviour
 
         GameObject newDrone = GetComponent<Spawner>().Spawn();
         newDrone.GetComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().material;
+        newDrone.GetComponent<Drone>().Setup(gameObject);
         drones.Add(newDrone);
     }
 
