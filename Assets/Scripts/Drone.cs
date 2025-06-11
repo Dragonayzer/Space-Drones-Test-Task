@@ -21,7 +21,7 @@ public class Drone : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInChildren<NavMeshAgent>();
         obstacle = GetComponent<NavMeshObstacle>();
         Search();
     }
@@ -60,6 +60,7 @@ public class Drone : MonoBehaviour
 
         state = State.Finale;
         GetComponentInChildren<ParticleSystem>().Play();
+        GetComponent<CompassFollower>().enabled = false;
         transform.DOScale(0.0f, 3f).SetEase(Ease.InOutBounce)
                  .OnComplete(() => {
                     homePoint.GetComponent<Base>().SubmitResource(gameObject);
@@ -79,8 +80,7 @@ public class Drone : MonoBehaviour
 
         Destroy(target);
         state = State.Returning;
-        obstacle.enabled = false;
-        agent.enabled = true;
+        GetComponent<CompassFollower>().enabled = true;
         agent.destination = homePoint.transform.position;
     }
 
@@ -96,8 +96,7 @@ public class Drone : MonoBehaviour
         {
             agent.destination = transform.position;
             state = State.Looting;
-            agent.enabled = false;
-            obstacle.enabled = true;
+            GetComponent<CompassFollower>().enabled = false;
             lastAction = Time.time;
             target.tag = "Untagged";
             return;

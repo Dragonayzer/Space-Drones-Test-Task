@@ -12,7 +12,7 @@ public class PathDrawer : MonoBehaviour
     void Start()
     {
         line = GetComponent<LineRenderer>();
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInChildren<NavMeshAgent>();
 
         if (!Settings.dronePathDisplay)
         {
@@ -26,7 +26,7 @@ public class PathDrawer : MonoBehaviour
         {
             line.enabled = Settings.dronePathDisplay;
         }
-        
+
         if (!Settings.dronePathDisplay) { return; }
 
         line.SetPositions(agent.path.corners);
