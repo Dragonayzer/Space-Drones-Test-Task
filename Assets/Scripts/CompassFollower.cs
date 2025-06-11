@@ -20,7 +20,7 @@ public class CompassFollower : MonoBehaviour
         if (Vector3.Distance(transform.position, compass.transform.position) > leashLength)
         {
             Vector3 direction = Vector3.Normalize(compass.transform.position - transform.position);
-            compass.transform.position = transform.position + direction * leashLength;
+            compass.transform.position = transform.position + direction * leashLength/2f;
         }
 
         Vector3 nextStep = Vector3.MoveTowards(transform.position, compass.transform.position, Settings.droneSpeed * Time.deltaTime);
