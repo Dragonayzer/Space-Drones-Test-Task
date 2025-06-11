@@ -99,8 +99,11 @@ public class Drone : MonoBehaviour
             SwitchState(State.Looting);
             GetComponent<CompassFollower>().enabled = false;
             lastAction = Time.time;
-            target.tag = "Untagged";
-            return;
+            if (!target.GetComponent<Interactable>().TryTake())
+            {
+                SwitchState(State.Searching);
+            }
+            return;            
         }
     }
 
