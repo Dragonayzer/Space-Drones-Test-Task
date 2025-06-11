@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -58,7 +59,7 @@ public class Drone : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, homePoint.transform.position) > 2f) return;
 
-        state = State.Finale;
+        SwitchState(State.Finale);
         GetComponentInChildren<ParticleSystem>().Play();
         GetComponent<CompassFollower>().enabled = false;
         transform.DOScale(0.0f, 3f).SetEase(Ease.InOutBounce)
@@ -79,7 +80,7 @@ public class Drone : MonoBehaviour
         if (lastAction + lootSpeed > Time.time) { return; }
 
         Destroy(target);
-        state = State.Returning;
+        SwitchState(State.Returning);
         GetComponent<CompassFollower>().enabled = true;
         agent.destination = homePoint.transform.position;
     }
@@ -95,7 +96,7 @@ public class Drone : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) < 0.5f)
         {
             agent.destination = transform.position;
-            state = State.Looting;
+            SwitchState(State.Looting);
             GetComponent<CompassFollower>().enabled = false;
             lastAction = Time.time;
             target.tag = "Untagged";
@@ -105,13 +106,19 @@ public class Drone : MonoBehaviour
 
     void Search()
     {
-        state = State.Searching;
+        SwitchState(State.Searching);
         agent.destination = transform.position;
         target = GetComponent<Locator>().Locate("Resource");
         if (target == null) { return; }
 
-        state = State.Hunting;
+        SwitchState(State.Hunting);
         agent.destination = target.transform.position;
+    }
+
+    void SwitchState(State _state)
+    {
+        state = _state;
+        GetComponentInChildren<TMP_Text>().text = ((int)state).ToString();
     }
 
     public void Setup(GameObject _homePoint)

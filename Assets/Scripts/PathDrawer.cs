@@ -30,5 +30,6 @@ public class PathDrawer : MonoBehaviour
         if (!Settings.dronePathDisplay) { return; }
 
         line.SetPositions(agent.path.corners);
+        line.SetPosition(0, transform.position);
     }
 }

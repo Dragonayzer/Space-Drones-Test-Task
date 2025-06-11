@@ -25,7 +25,7 @@ public class Base : MonoBehaviour
         if (drones.Count >= Settings.droneAmount) { return; }
 
         GameObject newDrone = GetComponent<Spawner>().Spawn();
-        newDrone.GetComponent<MeshRenderer>().material = GetComponent<MeshRenderer>().material;
+        newDrone.GetComponentInChildren<MeshRenderer>().material = GetComponent<MeshRenderer>().material;
         newDrone.GetComponent<Drone>().Setup(gameObject);
         drones.Add(newDrone);
     }

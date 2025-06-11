@@ -11,6 +11,10 @@ public class CompassFollower : MonoBehaviour
     [Tooltip("Distance of compass")]
     private float leashLength;
 
+    [SerializeField]
+    [Tooltip("Rotatable/visible object")]
+    private GameObject body;
+
     void Update()
     {
         if (Vector3.Distance(transform.position, compass.transform.position) > leashLength)
@@ -20,7 +24,7 @@ public class CompassFollower : MonoBehaviour
         }
 
         Vector3 nextStep = Vector3.MoveTowards(transform.position, compass.transform.position, Settings.droneSpeed * Time.deltaTime);
-        transform.LookAt(nextStep);
+        body.transform.LookAt(nextStep);
         transform.position = nextStep;
     }
 }
